@@ -1,7 +1,7 @@
 import uuid
-from src.models.movie_model import Movie as MovieModel
-from src.schemas.movie_schema import MovieCreate, MovieUpdate
-from src.database import Session
+from models.movie_model import Movie as MovieModel
+from schemas.movie_schema import MovieCreate, MovieUpdate
+from database import Session
 
 
 async def create_movie(data: MovieCreate):

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.routers.movie_router import movie_router
+from controllers.movie_controller import movie_router
 from fastapi.middleware.cors import CORSMiddleware
 
 # Create and configure FastAPI app
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
+# Include controllers
 app.include_router(movie_router, prefix="/api/v1")
 
 

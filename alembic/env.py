@@ -2,9 +2,9 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
-from src.models.movie_model import Movie
+from models.movie_model import Movie
 from dotenv import load_dotenv
-from src.config import Config
+from config import Config
 
 load_dotenv()
 

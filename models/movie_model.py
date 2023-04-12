@@ -1,5 +1,5 @@
 import uuid
-from src.database import Base
+from database import Base
 from sqlalchemy import Column, Integer, String, Float, UUID
 
 
