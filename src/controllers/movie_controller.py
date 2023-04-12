@@ -1,10 +1,10 @@
 import uuid
 from src.models.movie_model import Movie as MovieModel
-from src.schemas.movie_schema import Movie
+from src.schemas.movie_schema import MovieCreate, MovieUpdate
 from src.database import Session
 
 
-async def create_movie(data: Movie):
+async def create_movie(data: MovieCreate):
     db = Session()
     new_movie = MovieModel(**data.dict())
     db.add(new_movie)
@@ -25,7 +25,7 @@ async def get_movie(id: uuid.UUID):
     return movie
 
 
-async def update_movie(id: uuid.UUID, data: Movie):
+async def update_movie(id: uuid.UUID, data: MovieUpdate):
     db = Session()
     movie = db.query(MovieModel).filter(MovieModel.id == id).first()
     movie.title = data.title
