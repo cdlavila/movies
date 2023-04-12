@@ -30,3 +30,6 @@ It has the following endpoints:
 4. Run `alembic downgrade -1` to revert the last migration
 5. Run `alembic history` to see the migration history
 6. Run `alembic current` to see the current migration
+
+## Tests
+1. Run `pytest` to run the tests
