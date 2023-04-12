@@ -3,11 +3,18 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 from src.models.movie_model import Movie
+from dotenv import load_dotenv
+from src.config import Config
+
+load_dotenv()
 
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# Configuring the database url
+config.set_main_option('sqlalchemy.url', Config.SQLALCHEMY_DATABASE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

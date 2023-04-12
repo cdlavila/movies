@@ -13,3 +13,10 @@ class Config:
     DATABASE_USER = os.getenv('DATABASE_USER')
     DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+    SQLALCHEMY_DATABASE_URL = "postgresql://{user}:{password}@{host}:{port}/{database}".format(
+        user=DATABASE_USER,
+        password=DATABASE_PASSWORD,
+        host=DATABASE_HOST,
+        port=DATABASE_PORT,
+        database=DATABASE_NAME
+    )
