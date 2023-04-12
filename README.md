@@ -1,5 +1,5 @@
 # Movies
-REST API for a movies catalog application created with [FastAPI](https://fastapi.tiangolo.com/), [PostgreSQL](https://www.postgresql.org/), [SQLAlchemy](https://www.sqlalchemy.org/) and [Alembic](https://alembic.sqlalchemy.org/).<br>
+REST API for a movies catalog application created with [FastAPI](https://fastapi.tiangolo.com/), [PostgreSQL](https://www.postgresql.org/), [SQLAlchemy](https://www.sqlalchemy.org/), [Alembic](https://alembic.sqlalchemy.org/) and tested with [Pytest](https://docs.pytest.org/en/stable/).
 <br>
 <br>
 It has the following endpoints:
