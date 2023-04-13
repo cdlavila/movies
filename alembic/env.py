@@ -2,7 +2,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
-from models.movie_model import Movie
+from models.movies_model import Movie
 from dotenv import load_dotenv
 from config import Config
 

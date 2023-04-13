@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from controllers.movie_controller import movie_router
+from controllers.movies_controller import movie_router
 from fastapi.middleware.cors import CORSMiddleware
 
 # Create and configure FastAPI app
@@ -29,4 +29,3 @@ async def root():
 @app.get("/api/v1", tags=["Main"])
 async def say_welcome_api():
     return "Welcome to the movies REST API V1!"
-

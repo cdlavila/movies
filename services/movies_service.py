@@ -1,10 +1,10 @@
 import uuid
-from models.movie_model import Movie as MovieModel
-from schemas.movie_schema import MovieCreate, MovieUpdate
+from models.movies_model import Movie as MovieModel
+from schemas.movies_schema import MovieCreate, MovieUpdate
 from database import Session
 
 
-async def create_movie(data: MovieCreate):
+def create_movie(data: MovieCreate):
     db = Session()
     new_movie = MovieModel(**data.dict())
     db.add(new_movie)
@@ -13,19 +13,19 @@ async def create_movie(data: MovieCreate):
     return new_movie
 
 
-async def get_movies():
+def get_movies():
     db = Session()
     movies = db.query(MovieModel).all()
     return movies
 
 
-async def get_movie(id: uuid.UUID):
+def get_movie(id: uuid.UUID):
     db = Session()
     movie = db.query(MovieModel).filter(MovieModel.id == id).first()
     return movie
 
 
-async def update_movie(id: uuid.UUID, data: MovieUpdate):
+def update_movie(id: uuid.UUID, data: MovieUpdate):
     db = Session()
     movie = db.query(MovieModel).filter(MovieModel.id == id).first()
     movie.title = data.title
@@ -38,7 +38,7 @@ async def update_movie(id: uuid.UUID, data: MovieUpdate):
     return movie
 
 
-async def delete_movie(id: uuid.UUID):
+def delete_movie(id: uuid.UUID):
     db = Session()
     db.query(MovieModel).filter(MovieModel.id == id).first()
     db.query(MovieModel).filter(MovieModel.id == id).delete()
