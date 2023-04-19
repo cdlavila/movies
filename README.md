@@ -18,10 +18,12 @@ It has the following endpoints:
 1. Clone the repository
 2. Copy `.env.example` to `.env` and fill in the values
 3. Run `docker-compose up -d`
-4. Run `pip3 install -r requirements.txt`
-5. Run migrations with `alembic upgrade head`
-6. Run ` uvicorn main:app --reload`
-7. Go to <a>http://localhost:8000/docs to see the API documentation
+4. Run `python3 -m venv venv`
+5. Run `source venv/bin/activate`
+6. Run `pip3 install -r requirements.txt`
+7. Run migrations with `alembic upgrade head`
+8. Run ` uvicorn main:app --reload`
+9. Go to <a>http://localhost:8000/docs to see the API documentation
 
 ## Database migrations
 1. Run `alembic revision --autogenerate -m "message"` to autogenerate a new migration file with the changes you made to the models
