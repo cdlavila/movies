@@ -16,9 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include controllers
-app.include_router(movie_router, prefix="/api/v1")
-
 
 # Create main routes
 @app.get("/", tags=["Main"])
@@ -29,3 +26,6 @@ async def root():
 @app.get("/api/v1", tags=["Main"])
 async def say_welcome_api():
     return "Welcome to the movies REST API V1!"
+
+# Include other routers
+app.include_router(movie_router, prefix="/api/v1")
