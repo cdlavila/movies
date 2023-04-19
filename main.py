@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-# Create main routes
+# Create main routers
 @app.get("/", tags=["Main"])
 async def root():
     return "Movies server running!"
