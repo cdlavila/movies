@@ -3,22 +3,22 @@ from typing import List
 from schemas.movies_schema import Movie, MovieCreate, MovieUpdate
 from services import movies_service
 
-movie_router = APIRouter()
+movies_router = APIRouter()
 
 
-@movie_router.post('/movies', tags=['Movies'], status_code=201)
+@movies_router.post('/movies', tags=['Movies'], status_code=201)
 async def create_movie(data: MovieCreate) -> Movie:
     created_movie = movies_service.create_movie(data)
     return created_movie
 
 
-@movie_router.get('/movies', tags=['Movies'], status_code=200)
+@movies_router.get('/movies', tags=['Movies'], status_code=200)
 async def get_movies() -> List[Movie]:
     movies = movies_service.get_movies()
     return movies
 
 
-@movie_router.get('/movies/{id}', tags=['Movies'], status_code=200)
+@movies_router.get('/movies/{id}', tags=['Movies'], status_code=200)
 async def get_movie(id: str) -> Movie:
     movie = movies_service.get_movie(id)
     if not movie:
@@ -26,7 +26,7 @@ async def get_movie(id: str) -> Movie:
     return movie
 
 
-@movie_router.put('/movies/{id}', tags=['Movies'], status_code=200)
+@movies_router.put('/movies/{id}', tags=['Movies'], status_code=200)
 async def update_movie(id: str, data: MovieUpdate) -> Movie:
     movie = movies_service.get_movie(id)
     if not movie:
@@ -35,7 +35,7 @@ async def update_movie(id: str, data: MovieUpdate) -> Movie:
     return updated_movie
 
 
-@movie_router.delete('/movies/{id}', tags=['Movies'], status_code=204)
+@movies_router.delete('/movies/{id}', tags=['Movies'], status_code=204)
 async def delete_movie(id: str):
     movie = movies_service.get_movie(id)
     if not movie:
