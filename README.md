@@ -22,8 +22,9 @@ It has the following endpoints:
 5. Run `source venv/bin/activate`
 6. Run `pip3 install -r requirements.txt`
 7. Run migrations with `alembic upgrade head`
-8. Run ` uvicorn main:app --reload`
-9. Go to <a>http://localhost:8000/docs to see the API documentation
+8. Run ` uvicorn main:app --reload` to start the server
+9. OPTIONAL: Run `pm2 start "/home/ubuntu/movies/venv/bin/uvicorn main:app --port 8000 --host 0.0.0.0" --name "movies"` to start the server with pm2
+10. Go to <a>http://localhost:8000/docs to see the API documentation
 
 ## Database migrations
 1. Run `alembic revision --autogenerate -m "message"` to autogenerate a new migration file with the changes you made to the models
