@@ -53,4 +53,4 @@ jobs:
             git pull origin master
             source venv/bin/activate
             pip install -r requirements.txt
-            pm2 reload 1
+            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/pm2 reload 1

@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Create and configure FastAPI app
 app = FastAPI()
-app.title = "Movies catalog application"
-app.version = "0.0.1"
+app.title = "Movies Catalog Application"
+app.version = "1.0.0"
 
 # Configure CORS
 app.add_middleware(
