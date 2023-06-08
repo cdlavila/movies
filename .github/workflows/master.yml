@@ -18,14 +18,12 @@ jobs:
         with:
           python-version: '3.10.6'
       - name: Install dependencies
-        run: |
-          pip freeze > requirements.txt
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Make the environment file
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_PORT: ${{secrets.PORT}}
-          envkey_JWT_SECRET: ${{secrets.JWT_SECRET}}
+          envkey_JWT_SECRET_KEY: ${{secrets.JWT_SECRET_KEY}}
           envkey_DATABASE_HOST: ${{secrets.DATABASE_HOST}}
           envkey_DATABASE_PORT: ${{secrets.DATABASE_PORT}}
           envkey_DATABASE_NAME: ${{secrets.DATABASE_NAME}}
@@ -54,6 +52,5 @@ jobs:
             cd movies
             git pull origin master
             source venv/bin/activate
-            pip freeze > requirements.txt
             pip install -r requirements.txt
             pm2 reload 1
