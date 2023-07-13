@@ -17,12 +17,12 @@ It has the following endpoints:
 ## Installation
 1. Clone the repository
 2. Copy `.env.example` to `.env` and fill in the values
-3. Run `docker-compose up -d`
+3. Run `docker-compose up -d postgres`
 4. Run `python3 -m venv venv`
 5. Run `source venv/bin/activate`
 6. Run `pip3 install -r requirements.txt`
 7. Run migrations with `alembic upgrade head`
-8. Run ` uvicorn main:app --reload` to start the server
+8. Run `uvicorn main:app --host 0.0.0.0 --port 8000` to start the server
 9. OPTIONAL: Run `pm2 start "/home/ubuntu/movies/venv/bin/uvicorn main:app --port 8000 --host 0.0.0.0" --name "movies"` to start the server with pm2
 10. Go to <a>http://localhost:8000/docs to see the API documentation
 
@@ -36,3 +36,12 @@ It has the following endpoints:
 
 ## Tests
 1. Run `pytest` to run the tests
+
+## Docker
+Additionally, if you want to run the application with docker, you can do it with the following command:
+```bash
+docker-compose up -d app
+```
+Make sure you have followed the previos steps of the installation process.
+
+You can test the application by going to <a>http://localhost:80/docs </a>
