@@ -48,4 +48,4 @@ docker-compose up -d app
 ```
 Make sure you have followed the previos steps of the installation process.
 
-You can test the application by going to <a>http://localhost:80/docs </a>
+You can test the application by going to <a>http://localhost:8000/docs </a>
