@@ -37,6 +37,10 @@ It has the following endpoints:
 ## Tests
 1. Run `pytest` to run the tests
 
+## Linter
+1. Run `pylint filename.py` to run the linter on a specific file
+2. Run `pylint foldername` to run the linter on a specific folder
+
 ## Docker
 Additionally, if you want to run the application with docker, you can do it with the following command:
 ```bash
