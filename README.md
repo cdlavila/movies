@@ -31,8 +31,11 @@ It has the following endpoints:
 2. Run `alembic revision -m "message"` to create a new migration file
 3. Run `alembic upgrade head` to apply the migrations
 4. Run `alembic downgrade -1` to revert the last migration
-5. Run `alembic history` to see the migration history
-6. Run `alembic current` to see the current migration
+5. Run `alembic downgrade base` to revert all migrations
+6. Run `alembic downgrade <migration_name>` to revert to a specific migration
+7. Run `alembic downgrade <number>` to revert a specific migration and all the migrations after it
+8. Run `alembic history` to see the migration history
+9. Run `alembic current` to see the current migration
 
 ## Tests
 1. Run `pytest` to run the tests
