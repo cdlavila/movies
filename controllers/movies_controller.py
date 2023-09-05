@@ -7,13 +7,13 @@ from middlewares.auth_middleware import AuthMiddleware
 movies_router = APIRouter(prefix='/movies', tags=['Movies'], dependencies=[Depends(AuthMiddleware())])
 
 
-@movies_router.post('', status_code=status.HTTP_201_CREATED)
+@movies_router.post('/', status_code=status.HTTP_201_CREATED)
 async def create_movie(data: MovieCreate) -> Movie:
     created_movie = movies_service.create_movie(data)
     return created_movie
 
 
-@movies_router.get('', status_code=status.HTTP_200_OK)
+@movies_router.get('/', status_code=status.HTTP_200_OK)
 async def get_movies() -> List[Movie]:
     movies = movies_service.get_movies()
     return movies

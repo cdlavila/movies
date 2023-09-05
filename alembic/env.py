@@ -4,6 +4,7 @@ from sqlalchemy import pool
 from alembic import context
 from models.movies_model import Movie
 from models.users_model import User
+from models.directors_model import Director
 from dotenv import load_dotenv
 from config import Config
 

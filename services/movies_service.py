@@ -3,6 +3,7 @@ from models.movies_model import Movie as MovieModel
 from schemas.movies_schema import MovieCreate, MovieUpdate
 from database import Session
 from typing import List
+from sqlalchemy.orm import joinedload
 
 
 def create_movie(data: MovieCreate) -> MovieModel:
@@ -11,20 +12,20 @@ def create_movie(data: MovieCreate) -> MovieModel:
     db.add(new_movie)
     db.commit()
     db.refresh(new_movie)
-    db.close()
+    # db.close() ERROR: https://docs.sqlalchemy.org/en/20/errors.html#error-bhk3
     return new_movie
 
 
 def get_movies() -> List[MovieModel]:
     db = Session()
-    movies: List[MovieModel] = db.query(MovieModel).all()
+    movies: List[MovieModel] = db.query(MovieModel).options(joinedload(MovieModel.director)).all()
     db.close()
     return movies
 
 
 def get_movie(id: uuid.UUID) -> MovieModel:
     db = Session()
-    movie: MovieModel = db.query(MovieModel).filter(MovieModel.id == id).first()
+    movie: MovieModel = db.query(MovieModel).filter(MovieModel.id == id).options(joinedload(MovieModel.director)).first()
     db.close()
     return movie
 
@@ -39,7 +40,7 @@ def update_movie(id: uuid.UUID, data: MovieUpdate) -> MovieModel:
     movie.category = data.category
     db.commit()
     db.refresh(movie)
-    db.close()
+    # db.close() ERROR: https://docs.sqlalchemy.org/en/20/errors.html#error-bhk3
     return movie
 
 

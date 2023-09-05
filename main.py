@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from controllers.auth_controller import auth_router
 from controllers.users_controller import users_router
+from controllers.directors_controller import directors_router
 from controllers.movies_controller import movies_router
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -33,4 +34,5 @@ async def say_welcome_api():
 # Include other routers
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(users_router, prefix="/api/v1")
+app.include_router(directors_router, prefix="/api/v1")
 app.include_router(movies_router, prefix="/api/v1")

@@ -22,7 +22,7 @@ It has the following endpoints:
 5. Run `source venv/bin/activate`
 6. Run `pip3 install -r requirements.txt`
 7. Run migrations with `alembic upgrade head`
-8. Run `uvicorn main:app --host 0.0.0.0 --port 8000` to start the server
+8. Run `python -m uvicorn main:app --reload` or `uvicorn main:app --host 0.0.0.0 --port 8000` to start the server
 9. OPTIONAL: Run `pm2 start "/home/ubuntu/movies/venv/bin/uvicorn main:app --port 8000 --host 0.0.0.0" --name "movies"` to start the server with pm2
 10. Go to <a>http://localhost:8000/docs to see the API documentation
 
