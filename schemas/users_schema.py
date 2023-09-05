@@ -1,21 +1,12 @@
 import uuid
 from pydantic import BaseModel, Field
 from typing import Optional
-from passlib.context import CryptContext
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 class UserBase(BaseModel):
     full_name: str = Field(min_length=5, max_length=50)
     email: str = Field(min_length=5, max_length=50)
     password: str = Field(min_length=5, max_length=50)
-
-    def set_encrypted_password(self) -> None:
-        self.password = pwd_context.hash(self.password)
-
-    def check_password(self, password: str) -> bool:
-        return pwd_context.verify(password, self.password)
 
     class Config:
         schema_extra = {

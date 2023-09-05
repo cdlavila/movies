@@ -1,18 +1,20 @@
 from fastapi import APIRouter, HTTPException
 from schemas.auth_schema import AuthRegister, AuthLogin, AuthResponse
-from schemas.users_schema import User
-from services import auth_service, users_service
+from models.users_model import User as UserModel
+from services import auth_service
 
 auth_router = APIRouter()
 
 
 @auth_router.post('/register', tags=['Auth'], status_code=201)
 async def register(data: AuthRegister) -> AuthResponse:
-    user: User = users_service.get_user_by_email(data.email)
+    user: UserModel = auth_service.validate_user_by_email(data.email)
     if user:
         raise HTTPException(status_code=400, detail='Email already registered')
-    created_user: User = auth_service.register(data)
+
+    created_user: UserModel = auth_service.register(data)
     token: str = auth_service.generate_access_token(created_user.id)
+
     return AuthResponse(
         id=str(created_user.id),
         full_name=created_user.full_name,
@@ -23,12 +25,13 @@ async def register(data: AuthRegister) -> AuthResponse:
 
 @auth_router.post('/login', tags=['Auth'], status_code=200)
 async def login(data: AuthLogin) -> AuthResponse:
-    user: User = users_service.get_user_by_email(data.email)
+    user: UserModel = auth_service.validate_user_by_email(data.email)
     if not user:
         raise HTTPException(status_code=404, detail='User not found')
-    is_match = User.check_password(user, data.password)
-    if not is_match:
-        raise HTTPException(status_code=400, detail='Invalid credentials')
+
+    if not user.check_password(data.password):
+        raise HTTPException(status_code=400, detail='Incorrect password')
+
     token: str = auth_service.generate_access_token(user.id)
     return AuthResponse(
         id=str(user.id),
