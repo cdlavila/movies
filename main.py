@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from controllers.auth_controller import auth_router
+from controllers.users_controller import users_router
 from controllers.movies_controller import movies_router
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -7,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.title = "Movies Catalog Application"
 app.version = "1.0.0"
+app.description = "This is a simple REST API application for movies catalog"
 
 # Configure CORS
 app.add_middleware(
@@ -30,4 +32,5 @@ async def say_welcome_api():
 
 # Include other routers
 app.include_router(auth_router, prefix="/api/v1")
+app.include_router(users_router, prefix="/api/v1")
 app.include_router(movies_router, prefix="/api/v1")

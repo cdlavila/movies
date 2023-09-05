@@ -1,10 +1,10 @@
-from .users_schema import UserBase, User
+from .users_schema import User, UserCreate
 from pydantic import BaseModel, Field
 from typing import Optional
 import uuid
 
 
-class AuthRegister(UserBase):
+class AuthRegister(UserCreate):
     pass
 
 
@@ -15,8 +15,8 @@ class AuthLogin(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "email": "example.user@gmail.com",
-                "password": "examplepassword"
+                "email": UserCreate.Config.schema_extra['example']['email'],
+                "password": UserCreate.Config.schema_extra['example']['password']
             }
         }
 
