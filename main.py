@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from controllers.auth_controller import auth_router
 from controllers.movies_controller import movies_router
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -28,4 +29,5 @@ async def say_welcome_api():
     return "Welcome to the movies REST API V1!"
 
 # Include other routers
+app.include_router(auth_router, prefix="/api/v1")
 app.include_router(movies_router, prefix="/api/v1")

@@ -3,6 +3,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 from models.movies_model import Movie
+from models.users_model import User
 from dotenv import load_dotenv
 from config import Config
 
