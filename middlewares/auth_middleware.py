@@ -13,7 +13,7 @@ class AuthMiddleware(HTTPBearer):
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='No credentials provided')
 
         data: dict = jwt_util.verify_token(auth.credentials)
-        user: UserModel = users_service.get_by_id(data['id'])
+        user: UserModel = users_service.get_user(data['id'])
         if not user:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='User no longer exists')
 

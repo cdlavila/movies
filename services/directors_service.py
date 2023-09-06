@@ -20,3 +20,11 @@ def get_directors() -> List[DirectorModel]:
     directors = db.query(DirectorModel).all()
     db.close()
     return directors
+
+
+def delete_director(id: uuid.UUID) -> None:
+    db = Session()
+    db.query(DirectorModel).filter(DirectorModel.id == id).delete()
+    db.commit()
+    db.close()
+    return

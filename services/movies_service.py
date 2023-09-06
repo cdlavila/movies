@@ -46,7 +46,6 @@ def update_movie(id: uuid.UUID, data: MovieUpdate) -> MovieModel:
 
 def delete_movie(id: uuid.UUID) -> None:
     db = Session()
-    db.query(MovieModel).filter(MovieModel.id == id).first()
     db.query(MovieModel).filter(MovieModel.id == id).delete()
     db.commit()
     db.close()
