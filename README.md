@@ -39,6 +39,7 @@ It has the following endpoints:
 
 ## Tests
 1. Run `pytest` to run the tests
+2. Run `pytest filename.py` to run the tests in a specific file
 
 ## Linter
 1. Run `pylint filename.py` to run the linter on a specific file
